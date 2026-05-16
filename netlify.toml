@@ -1,9 +1,11 @@
 [build]
-command = "rm -rf .next node_modules/.cache && pnpm run build"
-publish = ".next"
+  # 指定主应用目录（非常重要！）
+  base = "apps/web"
+  # 安全的构建命令，保留缓存，避免 OOM
+  command = "next build"
+  # 构建产物目录（相对于 base）
+  publish = ".next"
 
 [build.environment]
-NODE_OPTIONS = "--max-old-space-size=4096"
-
-[template.environment]
-OPENAI_API_KEY = "set your OpenAI API Key"
+  # 增加 Node.js 内存上限，防止 OOM
+  NODE_OPTIONS = "--max-old-space-size=3072"
