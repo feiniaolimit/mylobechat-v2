@@ -1,0 +1,11 @@
+[build]
+  # 明确指定项目根目录
+  base = "./"
+  # 构建命令
+  command = "next build"
+  # 明确指定构建产物目录（相对于 base）
+  publish = ".next"
+
+[build.environment]
+  # 这是防止内存不足的保命符
+  NODE_OPTIONS = "--max-old-space-size=3072"
